@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto | Lonera Carrera</title>
+  <meta name="description" content="Formulario de contacto de Lonera Carrera para consultas, reservas y presupuestos de lonería.">
+  <meta name="author" content="Tomas Godoy">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <a href="index.html">
+      <img src="img/logo.svg" alt="" width="56" height="56">
+      <span>Lonera Carrera</span>
+    </a>
+
+    <!-- El botón del menú responsive todavía no hace nada: lo activa JavaScript en SP4 (aria-expanded pasará a true al abrirlo). -->
+    <button type="button" aria-expanded="false" aria-controls="menu-principal">Menú</button>
+
+    <nav aria-label="Principal">
+      <ul id="menu-principal">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- El número del pedido es de ejemplo; en SP4 lo actualiza JavaScript. -->
+    <a href="catalogo.html#pedido">Pedido (<span>2</span>)</a>
+  </header>
+
+
+  <main id="contenido">
+
+    <h1>Contacto</h1>
+    <p>Consultá por un castillo, pedí un presupuesto de lonería o hacenos una pregunta. Respondemos a la brevedad.</p>
+
+    <section aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Escribinos</h2>
+      <p>Todos los campos son obligatorios, salvo los marcados como opcionales.</p>
+
+      <form id="form-contacto" action="#" method="post">
+        <div>
+          <label for="nombre">Nombre y apellido</label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+        </div>
+
+        <div>
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" pattern="[0-9]{8,13}" required aria-describedby="telefono-ayuda">
+          <p id="telefono-ayuda">Con código de área, sin espacios ni guiones.</p>
+        </div>
+
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div>
+          <label for="motivo">Motivo de la consulta</label>
+          <select id="motivo" name="motivo" required>
+            <option value="">Elegí una opción</option>
+            <option value="alquiler">Alquiler de castillo inflable</option>
+            <option value="fabricacion">Fabricación de castillo inflable</option>
+            <option value="loneria">Presupuesto de lonería</option>
+            <option value="otra">Otra consulta</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fecha">Fecha del evento (opcional)</label>
+          <input type="date" id="fecha" name="fecha">
+        </div>
+
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" cols="40" required aria-describedby="mensaje-ayuda"></textarea>
+          <p id="mensaje-ayuda">Contanos qué necesitás. Si es un trabajo de lonería, indicá las medidas y el uso previsto.</p>
+        </div>
+
+        <button type="submit">Enviar consulta</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="titulo-datos-contacto">
+      <h2 id="titulo-datos-contacto">Datos de contacto</h2>
+
+      <!-- Datos de ejemplo: se reemplazan por los reales del cliente. -->
+      <address>
+        <dl>
+          <dt>Teléfono</dt>
+          <dd>+54 9 ___ ___ ____</dd>
+          <dt>Correo</dt>
+          <dd><a href="mailto:hola@loneracarrera.com.ar">hola@loneracarrera.com.ar</a></dd>
+          <dt>Horario de atención</dt>
+          <dd>A completar con el cliente</dd>
+          <dt>Ubicación</dt>
+          <dd>A completar con el cliente</dd>
+        </dl>
+      </address>
+    </section>
+
+    <section aria-labelledby="titulo-faq">
+      <h2 id="titulo-faq">Preguntas frecuentes</h2>
+
+      <details>
+        <summary>¿Con cuánta anticipación reservo?</summary>
+        <p>Conviene reservar con la mayor anticipación posible. En el catálogo podés ver si el castillo que te gusta está libre en tu fecha.</p>
+      </details>
+      <details>
+        <summary>¿Cómo se coordina la entrega?</summary>
+        <p>Al confirmar el pedido elegís retiro en el local o envío a domicilio, y la empresa coordina el día y el horario con vos.</p>
+      </details>
+      <details>
+        <summary>¿Cómo pido un presupuesto de lonería?</summary>
+        <p>Agregá el trabajo a tu pedido desde el catálogo o escribinos desde este formulario, con las medidas y el uso previsto.</p>
+      </details>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>Lonera Carrera. Maqueta académica de Aplicaciones Web I, SP2. Tomas Godoy.</p>
+  </footer>
+
+  <!-- Región de avisos (toasts). Está vacía a propósito: en SP4 JavaScript escribe acá los mensajes
+       y el lector de pantalla los anuncia sin mover el foco. -->
+  <div id="avisos" role="status" aria-atomic="true"></div>
+
+</body>
+</html>

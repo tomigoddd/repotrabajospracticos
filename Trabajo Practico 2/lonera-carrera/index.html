@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio | Lonera Carrera</title>
+  <meta name="description" content="Lonera Carrera: trabajos de lonería, fabricación y alquiler de castillos inflables.">
+  <meta name="author" content="Tomas Godoy">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <a href="index.html">
+      <img src="img/logo.svg" alt="" width="56" height="56">
+      <span>Lonera Carrera</span>
+    </a>
+
+    <!-- El botón del menú responsive todavía no hace nada: lo activa JavaScript en SP4 (aria-expanded pasará a true al abrirlo). -->
+    <button type="button" aria-expanded="false" aria-controls="menu-principal">Menú</button>
+
+    <nav aria-label="Principal">
+      <ul id="menu-principal">
+          <li><a href="index.html" aria-current="page">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- El número del pedido es de ejemplo; en SP4 lo actualiza JavaScript. -->
+    <a href="catalogo.html#pedido">Pedido (<span>2</span>)</a>
+  </header>
+
+
+  <main id="contenido">
+
+    <section aria-labelledby="titulo-inicio">
+      <h1 id="titulo-inicio">Lonería y castillos inflables</h1>
+      <p>Trabajos de lonería, fabricación y alquiler de castillos inflables, con el seguimiento de cada pedido y cada reserva en un solo lugar.</p>
+      <p>
+        <a href="catalogo.html">Ver catálogo</a>
+        <a href="contacto.html">Pedir presupuesto</a>
+      </p>
+      <img src="img/hero-castillo.svg" alt="Ilustración de un castillo inflable azul con torres rojas" width="320" height="270">
+    </section>
+
+    <section aria-labelledby="titulo-servicios">
+      <h2 id="titulo-servicios">Servicios</h2>
+
+      <article aria-labelledby="servicio-loneria">
+        <img src="img/servicio-loneria.svg" alt="" width="240" height="188">
+        <h3 id="servicio-loneria">Lonería</h3>
+        <p>Toldos y otros trabajos en lona, a medida, desde el pedido del cliente hasta el pago.</p>
+        <p><a href="catalogo.html">Ver trabajos de lonería</a></p>
+      </article>
+
+      <article aria-labelledby="servicio-castillos">
+        <img src="img/servicio-castillos.svg" alt="" width="240" height="203">
+        <h3 id="servicio-castillos">Castillos inflables</h3>
+        <p>Fabricamos castillos inflables y los alquilamos para eventos. Consultá la disponibilidad por fecha antes de reservar.</p>
+        <p><a href="catalogo.html">Ver castillos</a></p>
+      </article>
+    </section>
+
+    <section aria-labelledby="titulo-pasos">
+      <h2 id="titulo-pasos">Cómo reservar y pedir</h2>
+      <ol>
+        <li>
+          <h3>Elegí</h3>
+          <p>Mirá el catálogo y filtrá por tipo, tamaño o capacidad.</p>
+        </li>
+        <li>
+          <h3>Indicá la fecha</h3>
+          <p>Comprobá si el castillo está libre el día de tu evento.</p>
+        </li>
+        <li>
+          <h3>Confirmá</h3>
+          <p>Completá tus datos y recibí el número de tu pedido.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="titulo-consulta">
+      <h2 id="titulo-consulta">¿Tenés una consulta?</h2>
+      <p>Si necesitás un trabajo de lonería a medida o tenés dudas sobre un alquiler, escribinos.</p>
+      <p><a href="contacto.html">Ir al formulario de contacto</a></p>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>Lonera Carrera. Maqueta académica de Aplicaciones Web I, SP2. Tomas Godoy.</p>
+  </footer>
+
+  <!-- Región de avisos (toasts). Está vacía a propósito: en SP4 JavaScript escribe acá los mensajes
+       y el lector de pantalla los anuncia sin mover el foco. -->
+  <div id="avisos" role="status" aria-atomic="true"></div>
+
+</body>
+</html>

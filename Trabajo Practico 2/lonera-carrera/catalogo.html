@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo | Lonera Carrera</title>
+  <meta name="description" content="Catálogo de castillos inflables y trabajos de lonería de Lonera Carrera, con filtros, disponibilidad por fecha y pedido.">
+  <meta name="author" content="Tomas Godoy">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <a href="index.html">
+      <img src="img/logo.svg" alt="" width="56" height="56">
+      <span>Lonera Carrera</span>
+    </a>
+
+    <!-- El botón del menú responsive todavía no hace nada: lo activa JavaScript en SP4 (aria-expanded pasará a true al abrirlo). -->
+    <button type="button" aria-expanded="false" aria-controls="menu-principal">Menú</button>
+
+    <nav aria-label="Principal">
+      <ul id="menu-principal">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html" aria-current="page">Catálogo</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- El número del pedido es de ejemplo; en SP4 lo actualiza JavaScript. -->
+    <a href="catalogo.html#pedido">Pedido (<span>2</span>)</a>
+  </header>
+
+
+  <main id="contenido">
+
+    <h1>Catálogo</h1>
+    <p>Castillos inflables para alquilar y trabajos de lonería para pedir presupuesto. Elegí la fecha de tu evento para ver qué castillos están libres.</p>
+
+    <section aria-labelledby="titulo-filtros">
+      <h2 id="titulo-filtros">Filtrar productos</h2>
+
+      <form id="filtros" role="search" action="catalogo.html" method="get">
+        <div>
+          <label for="buscar">Buscar</label>
+          <input type="search" id="buscar" name="q" placeholder="Nombre del producto">
+        </div>
+
+        <fieldset>
+          <legend>Tipo</legend>
+          <input type="radio" id="tipo-todos" name="tipo" value="todos" checked>
+          <label for="tipo-todos">Todos</label>
+          <input type="radio" id="tipo-castillos" name="tipo" value="castillos">
+          <label for="tipo-castillos">Castillos</label>
+          <input type="radio" id="tipo-loneria" name="tipo" value="loneria">
+          <label for="tipo-loneria">Lonería</label>
+        </fieldset>
+
+        <div>
+          <label for="capacidad">Capacidad</label>
+          <select id="capacidad" name="capacidad">
+            <option value="">Cualquiera</option>
+            <option value="1-5">Hasta 5 niños</option>
+            <option value="6-8">De 6 a 8 niños</option>
+            <option value="9-99">9 o más niños</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="precio">Precio por día</label>
+          <select id="precio" name="precio">
+            <option value="">Cualquiera</option>
+            <option value="0-35000">Hasta $ 35.000</option>
+            <option value="35000-50000">De $ 35.000 a $ 50.000</option>
+            <option value="50000-999999">Más de $ 50.000</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="fecha-evento">Fecha del evento</label>
+          <input type="date" id="fecha-evento" name="fecha" value="2026-12-12" aria-describedby="ayuda-fecha">
+          <p id="ayuda-fecha">Con una fecha elegida se muestra qué castillos están libres. La capacidad y el precio por día se aplican a los castillos.</p>
+        </div>
+
+        <button type="submit">Buscar</button>
+        <button type="reset">Limpiar filtros</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="titulo-resultados">
+      <h2 id="titulo-resultados">Productos</h2>
+
+      <!-- Las seis tarjetas son un ejemplo fijo. En SP4 JavaScript las genera desde el archivo JSON con fetch
+           y actualiza este resumen cada vez que cambian los filtros (por eso aria-live). -->
+      <p id="resumen-resultados" aria-live="polite">Mostrando 6 productos</p>
+
+      <ul id="lista-productos">
+      <li>
+        <article data-id="castillo-clasico" data-categoria="castillos" data-precio="45000" aria-labelledby="prod-1">
+          <img src="img/castillo-clasico.svg" alt="Castillo inflable clásico, azul con torres rojas" width="160" height="135">
+          <h3 id="prod-1">Castillo clásico</h3>
+          <dl>
+            <dt>Medidas</dt>
+            <dd>4 × 4 m</dd>
+            <dt>Capacidad</dt>
+            <dd>Hasta 8 niños</dd>
+            <dt>Edades</dt>
+            <dd>De 3 a 10 años</dd>
+          </dl>
+          <p><data value="45000">$ 45.000</data> por día</p>
+          <p>Disponible el 12/12/2026</p>
+          <button type="button" aria-haspopup="dialog" aria-controls="ficha-producto" aria-describedby="prod-1">Ver ficha</button>
+          <button type="button" aria-describedby="prod-1">Agregar al pedido</button>
+        </article>
+      </li>
+      <li>
+        <article data-id="castillo-tobogan" data-categoria="castillos" data-precio="62000" aria-labelledby="prod-2">
+          <img src="img/castillo-tobogan.svg" alt="Castillo inflable rojo con tobogán" width="175" height="135">
+          <h3 id="prod-2">Castillo con tobogán</h3>
+          <dl>
+            <dt>Medidas</dt>
+            <dd>5 × 4 m</dd>
+            <dt>Capacidad</dt>
+            <dd>Hasta 10 niños</dd>
+            <dt>Edades</dt>
+            <dd>De 4 a 12 años</dd>
+          </dl>
+          <p><data value="62000">$ 62.000</data> por día</p>
+          <p>No disponible el 12/12/2026</p>
+          <button type="button" aria-haspopup="dialog" aria-controls="ficha-producto" aria-describedby="prod-2">Ver ficha</button>
+          <button type="button" aria-describedby="prod-2" disabled>No disponible en esta fecha</button>
+        </article>
+      </li>
+      <li>
+        <article data-id="castillo-mini" data-categoria="castillos" data-precio="32000" aria-labelledby="prod-3">
+          <img src="img/castillo-mini.svg" alt="Castillo inflable mini, amarillo con torres azules" width="160" height="135">
+          <h3 id="prod-3">Castillo mini</h3>
+          <dl>
+            <dt>Medidas</dt>
+            <dd>3 × 3 m</dd>
+            <dt>Capacidad</dt>
+            <dd>Hasta 5 niños</dd>
+            <dt>Edades</dt>
+            <dd>De 2 a 6 años</dd>
+          </dl>
+          <p><data value="32000">$ 32.000</data> por día</p>
+          <p>Disponible el 12/12/2026</p>
+          <button type="button" aria-haspopup="dialog" aria-controls="ficha-producto" aria-describedby="prod-3">Ver ficha</button>
+          <button type="button" aria-describedby="prod-3">Agregar al pedido</button>
+        </article>
+      </li>
+      <li>
+        <article data-id="toldo-a-medida" data-categoria="loneria" data-precio="0" aria-labelledby="prod-4">
+          <img src="img/toldo-a-medida.svg" alt="Toldo de lona rojo y blanco sobre una fachada" width="160" height="125">
+          <h3 id="prod-4">Toldo a medida</h3>
+          <dl>
+            <dt>Uso</dt>
+            <dd>Patios, locales y ventanas</dd>
+            <dt>Medidas</dt>
+            <dd>A medida</dd>
+          </dl>
+          <p>Precio a cotizar</p>
+          <p>Se cotiza según medidas</p>
+          <button type="button" aria-haspopup="dialog" aria-controls="ficha-producto" aria-describedby="prod-4">Ver ficha</button>
+          <button type="button" aria-describedby="prod-4">Pedir presupuesto</button>
+        </article>
+      </li>
+      <li>
+        <article data-id="cobertor-lona" data-categoria="loneria" data-precio="0" aria-labelledby="prod-5">
+          <img src="img/cobertor-lona.svg" alt="Cobertor de lona azul con ojales" width="160" height="125">
+          <h3 id="prod-5">Cobertor de lona</h3>
+          <dl>
+            <dt>Uso</dt>
+            <dd>Cobertura de equipos, vehículos o materiales</dd>
+            <dt>Medidas</dt>
+            <dd>A pedido, con refuerzos</dd>
+          </dl>
+          <p>Precio a cotizar</p>
+          <p>Se cotiza según medidas</p>
+          <button type="button" aria-haspopup="dialog" aria-controls="ficha-producto" aria-describedby="prod-5">Ver ficha</button>
+          <button type="button" aria-describedby="prod-5">Pedir presupuesto</button>
+        </article>
+      </li>
+      <li>
+        <article data-id="castillo-a-medida" data-categoria="castillos" data-precio="0" aria-labelledby="prod-6">
+          <img src="img/castillo-a-medida.svg" alt="Castillo inflable azul con torres amarillas" width="160" height="135">
+          <h3 id="prod-6">Castillo a medida</h3>
+          <dl>
+            <dt>Servicio</dt>
+            <dd>Fabricación</dd>
+            <dt>Diseño</dt>
+            <dd>Según tu pedido</dd>
+          </dl>
+          <p>Precio a cotizar</p>
+          <p>Se cotiza según diseño</p>
+          <button type="button" aria-haspopup="dialog" aria-controls="ficha-producto" aria-describedby="prod-6">Ver ficha</button>
+          <button type="button" aria-describedby="prod-6">Pedir presupuesto</button>
+        </article>
+      </li>
+      </ul>
+    </section>
+
+    <aside id="pedido" aria-labelledby="titulo-pedido">
+      <h2 id="titulo-pedido">Tu pedido (<span>2</span>)</h2>
+
+      <table>
+        <caption>Productos del pedido</caption>
+        <thead>
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Importe</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Castillo clásico <span>(fecha: <time datetime="2026-12-12">12/12/2026</time>)</span></th>
+            <td><input type="number" min="1" max="1" value="1" aria-label="Cantidad de Castillo clásico"></td>
+            <td><data value="45000">$ 45.000</data></td>
+            <td><button type="button" aria-label="Quitar Castillo clásico del pedido">Quitar</button></td>
+          </tr>
+          <tr>
+            <th scope="row">Toldo a medida <span>(presupuesto)</span></th>
+            <td><input type="number" min="1" value="1" aria-label="Cantidad de Toldo a medida"></td>
+            <td>A cotizar</td>
+            <td><button type="button" aria-label="Quitar Toldo a medida del pedido">Quitar</button></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Subtotal</th>
+            <td colspan="2"><data value="45000">$ 45.000</data></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <p>Los trabajos de lonería se cotizan aparte y no se suman al subtotal.</p>
+      <p>
+        <a href="#datos-entrega">Continuar con los datos</a>
+        <button type="button">Vaciar pedido</button>
+      </p>
+    </aside>
+
+    <section id="datos-entrega" aria-labelledby="titulo-datos">
+      <h2 id="titulo-datos">Datos y entrega</h2>
+      <p>Completá tus datos para enviar el pedido. Todos los campos son obligatorios, salvo los marcados como opcionales.</p>
+
+      <form id="form-pedido" action="#" method="post">
+        <fieldset>
+          <legend>Tus datos</legend>
+
+          <div>
+            <label for="pedido-nombre">Nombre y apellido</label>
+            <input type="text" id="pedido-nombre" name="nombre" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="pedido-telefono">Teléfono</label>
+            <input type="tel" id="pedido-telefono" name="telefono" autocomplete="tel" inputmode="tel" required aria-describedby="pedido-telefono-ayuda">
+            <p id="pedido-telefono-ayuda">Con código de área, sin espacios ni guiones.</p>
+          </div>
+          <div>
+            <label for="pedido-email">Correo electrónico</label>
+            <input type="email" id="pedido-email" name="email" autocomplete="email" required>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Entrega</legend>
+
+          <input type="radio" id="entrega-retiro" name="entrega" value="retiro" checked>
+          <label for="entrega-retiro">Retiro en el local</label>
+          <input type="radio" id="entrega-envio" name="entrega" value="envio">
+          <label for="entrega-envio">Envío a domicilio</label>
+
+          <div>
+            <label for="pedido-direccion">Dirección de entrega</label>
+            <input type="text" id="pedido-direccion" name="direccion" autocomplete="address-line1" aria-describedby="pedido-direccion-ayuda">
+            <p id="pedido-direccion-ayuda">Completala solo si elegís envío a domicilio.</p>
+          </div>
+        </fieldset>
+
+        <div>
+          <label for="pedido-observaciones">Observaciones (opcional)</label>
+          <textarea id="pedido-observaciones" name="observaciones" rows="4" cols="40"></textarea>
+        </div>
+
+        <p>El pago se coordina con la empresa al confirmar el pedido.</p>
+        <button type="submit">Confirmar pedido</button>
+      </form>
+    </section>
+
+    <!-- Pantalla de confirmación. Está oculta (hidden) hasta que el pedido se envía: en SP4 JavaScript le saca
+         el atributo hidden, completa los datos y le pasa el foco. El número y el resumen son de ejemplo. -->
+    <section id="confirmacion" role="status" aria-labelledby="titulo-confirmacion" tabindex="-1" hidden>
+      <h2 id="titulo-confirmacion">Pedido confirmado</h2>
+      <p>Recibimos tu pedido. Número de pedido: <strong>LC-0001</strong></p>
+      <dl>
+        <dt>Productos</dt>
+        <dd>Castillo clásico (12/12/2026) y Toldo a medida (presupuesto)</dd>
+        <dt>Entrega</dt>
+        <dd>Retiro en el local</dd>
+        <dt>Subtotal</dt>
+        <dd><data value="45000">$ 45.000</data></dd>
+      </dl>
+      <p>Te vamos a contactar para coordinar el pago y los detalles.</p>
+      <p>
+        <a href="catalogo.html">Volver al catálogo</a>
+        <a href="index.html">Ir al inicio</a>
+      </p>
+    </section>
+
+  </main>
+
+
+  <!-- Ficha del producto (ventana modal). Cerrada por defecto: en SP4 JavaScript la abre con showModal()
+       y completa el contenido del producto elegido. Lo que hay acá es un ejemplo. -->
+  <dialog id="ficha-producto" aria-labelledby="ficha-titulo">
+    <form method="dialog">
+      <button type="submit" aria-label="Cerrar la ficha">Cerrar</button>
+    </form>
+    <img src="img/castillo-clasico.svg" alt="Castillo inflable clásico, azul con torres rojas" width="160" height="135">
+    <h2 id="ficha-titulo">Castillo clásico</h2>
+    <p>Castillo inflable de torres y arco de entrada, pensado para fiestas infantiles.</p>
+    <dl>
+      <dt>Medidas</dt>
+      <dd>4 × 4 m</dd>
+      <dt>Capacidad</dt>
+      <dd>Hasta 8 niños</dd>
+      <dt>Edades</dt>
+      <dd>De 3 a 10 años</dd>
+      <dt>Precio</dt>
+      <dd><data value="45000">$ 45.000</data> por día</dd>
+      <dt>Disponibilidad</dt>
+      <dd>Disponible el 12/12/2026</dd>
+    </dl>
+    <button type="button">Agregar al pedido</button>
+  </dialog>
+
+  <footer>
+    <p>Lonera Carrera. Maqueta académica de Aplicaciones Web I, SP2. Tomas Godoy.</p>
+  </footer>
+
+  <!-- Región de avisos (toasts). Está vacía a propósito: en SP4 JavaScript escribe acá los mensajes
+       y el lector de pantalla los anuncia sin mover el foco. -->
+  <div id="avisos" role="status" aria-atomic="true"></div>
+
+</body>
+</html>
