@@ -1,0 +1,10 @@
+{
+  "reservas": [
+    { "productoId": "castillo-tobogan", "fecha": "2026-11-28" },
+    { "productoId": "castillo-clasico", "fecha": "2026-11-21" },
+    { "productoId": "castillo-mini", "fecha": "2026-12-05" },
+    { "productoId": "castillo-tobogan", "fecha": "2026-12-12" },
+    { "productoId": "castillo-clasico", "fecha": "2026-12-19" },
+    { "productoId": "castillo-mini", "fecha": "2026-12-24" }
+  ]
+}

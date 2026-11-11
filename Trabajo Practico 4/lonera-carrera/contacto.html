@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto | Lonera Carrera</title>
+  <meta name="description" content="Formulario de contacto de Lonera Carrera para consultas, reservas y presupuestos de lonería.">
+  <meta name="author" content="Tomas Godoy">
+  <meta name="theme-color" content="#b8231a">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/paginas.css">
+  <!-- Se ejecuta antes de dibujar la página. Los navegadores no cargan módulos ni hacen fetch cuando el sitio se abre
+       como archivo (file://), así que en ese caso no se activa la clase "js" y se muestra el aviso del servidor local. -->
+  <script>document.documentElement.classList.add(location.protocol === "file:" ? "sin-servidor" : "js");</script>
+  <!-- Módulo de la página (se ejecuta después de cargar el HTML). Requiere abrir el sitio con un servidor: ver README. -->
+  <script type="module" src="js/contacto.js"></script>
+</head>
+<body>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a class="marca" href="index.html">
+      <img class="marca__logo" src="img/logo.svg" alt="" width="56" height="56">
+      <span class="marca__nombre">Lonera Carrera</span>
+    </a>
+
+    <!-- Botón del menú responsive: lo activa js/modulos/menu.js. Sin JavaScript queda oculto y el menú se ve siempre. -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menú</button>
+
+    <nav class="menu" aria-label="Principal">
+      <ul class="menu__lista" id="menu-principal">
+          <li class="menu__item"><a class="menu__enlace" href="index.html">Inicio</a></li>
+          <li class="menu__item"><a class="menu__enlace" href="catalogo.html">Catálogo</a></li>
+          <li class="menu__item"><a class="menu__enlace" href="contacto.html" aria-current="page">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- El número lo mantiene js/comun.js a partir del pedido guardado en sessionStorage. -->
+    <a class="carrito-enlace" href="catalogo.html#pedido">Pedido (<span class="carrito-enlace__cantidad">0</span>)</a>
+  </header>
+
+  <!-- Solo se ve si el sitio se abre como archivo (clase "sin-servidor"). -->
+  <p class="banner-servidor" role="note">Este sitio necesita abrirse con un servidor local para funcionar: los navegadores bloquean los módulos de JavaScript y la carga de los archivos JSON cuando se abre el HTML con doble clic. Los pasos están en el README.</p>
+
+  <main id="contenido">
+
+    <h1 class="pagina__titulo">Contacto</h1>
+    <p class="pagina__intro">Consultá por un castillo, pedí un presupuesto de lonería o hacenos una pregunta. Respondemos a la brevedad.</p>
+
+    <div class="contacto__cuerpo">
+
+      <section class="contacto__formulario" aria-labelledby="titulo-formulario">
+        <h2 class="seccion__titulo seccion__titulo--chico" id="titulo-formulario">Escribinos</h2>
+        <p>Todos los campos son obligatorios, salvo los marcados como opcionales.</p>
+
+        <form class="formulario" id="form-contacto" action="#" method="post" novalidate>
+          <div class="campo">
+            <label class="campo__etiqueta" for="nombre">Nombre y apellido</label>
+            <input class="campo__control" type="text" id="nombre" name="nombre" autocomplete="name" required>
+          </div>
+
+          <div class="formulario__fila">
+            <div class="campo">
+              <label class="campo__etiqueta" for="telefono">Teléfono</label>
+              <input class="campo__control" type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" required aria-describedby="telefono-ayuda">
+              <p class="campo__ayuda" id="telefono-ayuda">Con código de área, por ejemplo 3515550000.</p>
+            </div>
+            <div class="campo">
+              <label class="campo__etiqueta" for="email">Correo electrónico</label>
+              <input class="campo__control" type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="formulario__fila">
+            <div class="campo">
+              <label class="campo__etiqueta" for="motivo">Motivo de la consulta</label>
+              <select class="campo__control" id="motivo" name="motivo" required>
+                <option value="">Elegí una opción</option>
+                <option value="alquiler">Alquiler de castillo inflable</option>
+                <option value="fabricacion">Fabricación de castillo inflable</option>
+                <option value="loneria">Presupuesto de lonería</option>
+                <option value="otra">Otra consulta</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label class="campo__etiqueta" for="fecha">Fecha del evento (opcional)</label>
+              <input class="campo__control" type="date" id="fecha" name="fecha">
+            </div>
+          </div>
+
+          <div class="campo">
+            <label class="campo__etiqueta" for="mensaje">Mensaje</label>
+            <textarea class="campo__control" id="mensaje" name="mensaje" rows="5" cols="40" required aria-describedby="mensaje-ayuda"></textarea>
+            <p class="campo__ayuda" id="mensaje-ayuda">Contanos qué necesitás. Si es un trabajo de lonería, indicá las medidas y el uso previsto.</p>
+          </div>
+
+          <div class="formulario__acciones">
+            <button class="boton" type="submit">Enviar consulta</button>
+          </div>
+        </form>
+      </section>
+
+      <div class="contacto__lateral">
+
+        <section class="etiqueta" aria-labelledby="titulo-datos-contacto">
+          <h2 class="etiqueta__titulo" id="titulo-datos-contacto">Datos de contacto</h2>
+
+          <!-- Datos de ejemplo: se reemplazan por los reales del cliente. -->
+          <address class="datos-contacto">
+            <dl class="datos-contacto__lista">
+              <dt>Teléfono</dt>
+              <dd>+54 9 ___ ___ ____</dd>
+              <dt>Correo</dt>
+              <dd><a href="mailto:hola@loneracarrera.com.ar">hola@loneracarrera.com.ar</a></dd>
+              <dt>Horario de atención</dt>
+              <dd>A completar con el cliente</dd>
+              <dt>Ubicación</dt>
+              <dd>A completar con el cliente</dd>
+            </dl>
+          </address>
+        </section>
+
+        <section class="faq" aria-labelledby="titulo-faq">
+          <h2 class="seccion__titulo seccion__titulo--chico" id="titulo-faq">Preguntas frecuentes</h2>
+
+          <details class="faq__item">
+            <summary class="faq__pregunta">¿Con cuánta anticipación reservo?</summary>
+            <p class="faq__respuesta">Conviene reservar con la mayor anticipación posible. En el catálogo podés ver si el castillo que te gusta está libre en tu fecha.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__pregunta">¿Cómo se coordina la entrega?</summary>
+            <p class="faq__respuesta">Al confirmar el pedido elegís retiro en el local o envío a domicilio, y la empresa coordina el día y el horario con vos.</p>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__pregunta">¿Cómo pido un presupuesto de lonería?</summary>
+            <p class="faq__respuesta">Agregá el trabajo a tu pedido desde el catálogo o escribinos desde este formulario, con las medidas y el uso previsto.</p>
+          </details>
+        </section>
+
+      </div>
+    </div>
+
+  </main>
+
+
+  <footer class="pie">
+    <p class="pie__texto">Lonera Carrera. Maqueta académica de Aplicaciones Web I, SP4. Tomas Godoy.</p>
+  </footer>
+
+  <!-- Región de avisos (toasts): js/modulos/avisos.js agrega acá los mensajes y el lector de pantalla los anuncia. -->
+  <div class="avisos" id="avisos" role="status" aria-atomic="true"></div>
+
+</body>
+</html>

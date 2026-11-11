@@ -1,0 +1,246 @@
+/* ==========================================================================
+   layout.css
+   Estructura común de las tres páginas: cabecera con toldo, contenedor principal
+   y pie. Se escribe primero para pantallas chicas y se amplía con min-width.
+   ========================================================================== */
+
+/* ---- Cabecera ----------------------------------------------------------- */
+
+.cabecera {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas:
+    "marca carrito toggle"
+    "menu  menu    menu";
+  align-items: center;
+  gap: var(--espacio-2) var(--espacio-3);
+  /* El contenido queda alineado con el ancho máximo de la página, y el fondo ocupa todo el ancho */
+  padding: var(--espacio-3) max(var(--gutter), calc((100% - var(--ancho-max)) / 2 + var(--gutter)));
+  background: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+  /* Espacio para el toldo que cuelga debajo (rayas + festón) y un respiro */
+  margin-bottom: calc(var(--toldo-alto) + var(--toldo-ancho) / 2 + var(--espacio-4));
+}
+
+/* Toldo: dos franjas que cuelgan de la cabecera, sin tocar el HTML.
+   ::before = las rayas; ::after = el festón (rayas recortadas con semicírculos). */
+.cabecera::before,
+.cabecera::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-toldo-a) 0 var(--toldo-ancho),
+    var(--color-toldo-b) var(--toldo-ancho) calc(var(--toldo-ancho) * 2)
+  );
+}
+
+.cabecera::before {
+  top: 100%;
+  height: var(--toldo-alto);
+  border-bottom: 0;
+  box-shadow: inset 0 1px 0 var(--color-borde);
+}
+
+.cabecera::after {
+  top: calc(100% + var(--toldo-alto));
+  height: calc(var(--toldo-ancho) / 2);
+  -webkit-mask: radial-gradient(circle at 50% 0, #000 calc(var(--toldo-ancho) / 2 - 1px), transparent calc(var(--toldo-ancho) / 2)) 0 0 / var(--toldo-ancho) 100% repeat-x;
+  mask: radial-gradient(circle at 50% 0, #000 calc(var(--toldo-ancho) / 2 - 1px), transparent calc(var(--toldo-ancho) / 2)) 0 0 / var(--toldo-ancho) 100% repeat-x;
+}
+
+/* Marca: logo + nombre */
+.marca {
+  grid-area: marca;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  text-decoration: none;
+  color: var(--color-primario);
+}
+
+.marca__logo {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.marca__nombre {
+  font-stretch: var(--titulo-ancho);
+  font-weight: var(--titulo-peso);
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+/* Botón de menú (lo activa js/modulos/menu.js). Solo se muestra si hay JavaScript (clase "js" en <html>)
+   y en pantallas angostas; sin JavaScript el menú queda siempre a la vista. */
+.menu-toggle {
+  display: none;
+  grid-area: toggle;
+  padding: 0.35rem 0.9rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-texto);
+  background: var(--color-superficie);
+  border: 2px solid var(--color-texto);
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+
+.menu-toggle[aria-expanded="true"] {
+  color: #fff;
+  background: var(--color-texto);
+}
+
+.js .menu-toggle {
+  display: inline-block;
+}
+
+/* Menú principal */
+.menu {
+  grid-area: menu;
+}
+
+.menu__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-1) var(--espacio-4);
+  list-style: none;
+}
+
+/* Con JavaScript, en móvil el menú está cerrado hasta que se abre con el botón */
+.js .menu {
+  display: none;
+}
+
+.js .menu--abierto {
+  display: block;
+}
+
+.js .menu__lista {
+  flex-direction: column;
+}
+
+.menu__enlace {
+  display: inline-block;
+  padding: 0.3rem 0;
+  font-weight: 700;
+  color: var(--color-texto);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.menu__enlace:hover {
+  border-bottom-color: var(--color-borde);
+}
+
+/* Página actual */
+.menu__enlace[aria-current="page"] {
+  color: var(--color-primario);
+  border-bottom-color: var(--color-primario);
+}
+
+/* Acceso al pedido */
+.carrito-enlace {
+  grid-area: carrito;
+  padding: 0.35rem 1rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  text-decoration: none;
+  background: var(--color-superficie);
+  border: 2px solid var(--color-texto);
+  border-radius: 999px;
+}
+
+.carrito-enlace:hover {
+  background: var(--color-texto);
+  color: #fff;
+}
+
+@media (min-width: 64rem) {
+  .cabecera {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "marca menu carrito";
+    gap: var(--espacio-3) var(--espacio-5);
+  }
+
+  /* En pantalla ancha el menú se ve siempre y el botón sobra */
+  .js .menu-toggle {
+    display: none;
+  }
+
+  .js .menu {
+    display: block;
+  }
+
+  .js .menu__lista {
+    flex-direction: row;
+  }
+}
+
+/* Aviso para quien abre el HTML con doble clic (ver el script del <head>) */
+.banner-servidor {
+  display: none;
+  width: min(var(--ancho-max) - 2 * var(--gutter), 100% - 2 * var(--gutter));
+  margin: 0 auto var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  font-weight: 700;
+  color: var(--color-primario-oscuro);
+  background: var(--color-superficie);
+  border: 2px solid var(--color-primario-oscuro);
+  border-radius: var(--radio);
+}
+
+.sin-servidor .banner-servidor {
+  display: block;
+}
+
+/* ---- Contenedor principal ----------------------------------------------- */
+
+main {
+  max-width: var(--ancho-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) var(--espacio-6);
+}
+
+/* Bloques genéricos de página */
+.pagina__titulo {
+  margin-bottom: var(--espacio-3);
+}
+
+.pagina__intro {
+  max-width: 40rem;
+  font-size: var(--fs-lg);
+  color: var(--color-suave);
+}
+
+.seccion {
+  padding-top: var(--espacio-5);
+}
+
+.seccion__titulo {
+  margin-bottom: var(--espacio-4);
+}
+
+.seccion__titulo--chico {
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--espacio-3);
+}
+
+/* ---- Pie ---------------------------------------------------------------- */
+
+.pie {
+  padding: var(--espacio-4) var(--gutter);
+  text-align: center;
+  background: var(--color-superficie);
+  border-top: 1px solid var(--color-borde);
+}
+
+.pie__texto {
+  margin: 0;
+  font-size: var(--fs-chico);
+  color: var(--color-suave);
+}

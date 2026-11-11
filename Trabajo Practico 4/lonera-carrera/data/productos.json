@@ -1,0 +1,112 @@
+{
+  "productos": [
+    {
+      "id": "castillo-clasico",
+      "categoria": "castillos",
+      "accion": "alquiler",
+      "nombre": "Castillo clásico",
+      "descripcion": "Castillo inflable de torres y arco de entrada, pensado para fiestas infantiles.",
+      "imagen": "img/castillo-clasico.svg",
+      "alt": "Castillo inflable clásico, azul con torres rojas",
+      "ancho": 160,
+      "alto": 135,
+      "precioPorDia": 45000,
+      "capacidadMax": 8,
+      "detalles": [
+        { "etiqueta": "Medidas", "valor": "4 × 4 m" },
+        { "etiqueta": "Capacidad", "valor": "Hasta 8 niños" },
+        { "etiqueta": "Edades", "valor": "De 3 a 10 años" }
+      ]
+    },
+    {
+      "id": "castillo-tobogan",
+      "categoria": "castillos",
+      "accion": "alquiler",
+      "nombre": "Castillo con tobogán",
+      "descripcion": "Castillo inflable con tobogán incorporado para saltar y deslizarse.",
+      "imagen": "img/castillo-tobogan.svg",
+      "alt": "Castillo inflable rojo con tobogán",
+      "ancho": 175,
+      "alto": 135,
+      "precioPorDia": 62000,
+      "capacidadMax": 10,
+      "detalles": [
+        { "etiqueta": "Medidas", "valor": "5 × 4 m" },
+        { "etiqueta": "Capacidad", "valor": "Hasta 10 niños" },
+        { "etiqueta": "Edades", "valor": "De 4 a 12 años" }
+      ]
+    },
+    {
+      "id": "castillo-mini",
+      "categoria": "castillos",
+      "accion": "alquiler",
+      "nombre": "Castillo mini",
+      "descripcion": "Castillo inflable compacto para los más chicos.",
+      "imagen": "img/castillo-mini.svg",
+      "alt": "Castillo inflable mini, amarillo con torres azules",
+      "ancho": 160,
+      "alto": 135,
+      "precioPorDia": 32000,
+      "capacidadMax": 5,
+      "detalles": [
+        { "etiqueta": "Medidas", "valor": "3 × 3 m" },
+        { "etiqueta": "Capacidad", "valor": "Hasta 5 niños" },
+        { "etiqueta": "Edades", "valor": "De 2 a 6 años" }
+      ]
+    },
+    {
+      "id": "toldo-a-medida",
+      "categoria": "loneria",
+      "accion": "presupuesto",
+      "nombre": "Toldo a medida",
+      "descripcion": "Toldos de lona a medida para patios, locales y ventanas.",
+      "imagen": "img/toldo-a-medida.svg",
+      "alt": "Toldo de lona rojo y blanco sobre una fachada",
+      "ancho": 160,
+      "alto": 125,
+      "precioPorDia": null,
+      "capacidadMax": null,
+      "estadoPresupuesto": "Se cotiza según medidas",
+      "detalles": [
+        { "etiqueta": "Uso", "valor": "Patios, locales y ventanas" },
+        { "etiqueta": "Medidas", "valor": "A medida" }
+      ]
+    },
+    {
+      "id": "cobertor-lona",
+      "categoria": "loneria",
+      "accion": "presupuesto",
+      "nombre": "Cobertor de lona",
+      "descripcion": "Cobertores de lona con ojales y refuerzos, a pedido.",
+      "imagen": "img/cobertor-lona.svg",
+      "alt": "Cobertor de lona azul con ojales",
+      "ancho": 160,
+      "alto": 125,
+      "precioPorDia": null,
+      "capacidadMax": null,
+      "estadoPresupuesto": "Se cotiza según medidas",
+      "detalles": [
+        { "etiqueta": "Uso", "valor": "Cobertura de equipos, vehículos o materiales" },
+        { "etiqueta": "Medidas", "valor": "A pedido, con refuerzos" }
+      ]
+    },
+    {
+      "id": "castillo-a-medida",
+      "categoria": "castillos",
+      "accion": "presupuesto",
+      "nombre": "Castillo a medida",
+      "descripcion": "Fabricamos castillos inflables según el diseño que necesites.",
+      "imagen": "img/castillo-a-medida.svg",
+      "alt": "Castillo inflable azul con torres amarillas",
+      "ancho": 160,
+      "alto": 135,
+      "precioPorDia": null,
+      "capacidadMax": null,
+      "estadoPresupuesto": "Se cotiza según diseño",
+      "detalles": [
+        { "etiqueta": "Servicio", "valor": "Fabricación" },
+        { "etiqueta": "Diseño", "valor": "Según tu pedido" }
+      ]
+    }
+  ]
+}
