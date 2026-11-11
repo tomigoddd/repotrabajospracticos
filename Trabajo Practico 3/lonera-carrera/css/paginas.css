@@ -1,0 +1,433 @@
+/* ==========================================================================
+   paginas.css
+   Bloques propios de cada página: inicio (hero, servicios, pasos, llamado),
+   catálogo (filtros, productos, pedido, confirmación) y contacto.
+   Mobile-first: lo de abajo es el diseño de móvil; cada @media agrega columnas
+   cuando hay lugar (40rem = 640 px, 48rem = 768 px, 64rem = 1024 px, 80rem = 1280 px).
+   ========================================================================== */
+
+/* ==== INICIO ============================================================== */
+
+.hero {
+  display: grid;
+  gap: var(--espacio-4);
+  align-items: center;
+  padding-top: var(--espacio-3);
+}
+
+.hero__titulo {
+  color: var(--color-texto);
+}
+
+.hero__lead {
+  max-width: 36rem;
+  font-size: var(--fs-lg);
+  color: var(--color-suave);
+}
+
+.hero__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+}
+
+.hero__imagen {
+  width: 100%;
+  max-width: 26rem;
+  justify-self: center;
+  padding: var(--espacio-4);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.servicios {
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.pasos {
+  display: grid;
+  gap: var(--espacio-4);
+  list-style: none;
+  counter-reset: paso;
+}
+
+.paso {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 var(--espacio-3);
+  align-items: start;
+  counter-increment: paso;
+}
+
+/* El número sale del contador CSS: el HTML sigue siendo una lista ordenada */
+.paso::before {
+  content: counter(paso);
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--color-acento);
+  border-radius: 50%;
+}
+
+.paso__titulo {
+  margin: 0 0 var(--espacio-1);
+  font-size: var(--fs-lg);
+}
+
+.paso p {
+  grid-column: 2;
+  margin: 0;
+}
+
+.llamado {
+  margin-top: var(--espacio-6);
+  padding: var(--espacio-5) var(--espacio-4);
+  color: #fff;
+  background: var(--color-acento);
+  border-radius: var(--radio);
+}
+
+.llamado__titulo {
+  font-size: var(--fs-3xl);
+}
+
+.llamado__texto {
+  max-width: 36rem;
+  font-size: var(--fs-lg);
+}
+
+.llamado :focus-visible {
+  outline-color: #fff;
+}
+
+@media (min-width: 40rem) {
+  .servicios {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pasos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--espacio-5);
+    padding-top: var(--espacio-5);
+  }
+}
+
+/* ==== CATÁLOGO ============================================================ */
+
+/* ---- Filtros ---- */
+
+.filtros {
+  display: grid;
+  gap: var(--espacio-3);
+  padding: var(--espacio-3) var(--espacio-4);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.filtros__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+
+@media (min-width: 40rem) {
+  .filtros {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filtros__buscar,
+  .filtros__tipo,
+  .filtros__ayuda,
+  .filtros__acciones {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 64rem) {
+  .filtros {
+    grid-template-columns: repeat(6, 1fr);
+    align-items: end;
+  }
+
+  .filtros__buscar { grid-column: span 3; }
+  .filtros__tipo { grid-column: span 3; }
+  .filtros .campo { grid-column: span 2; }
+  .filtros .filtros__buscar { grid-column: span 3; }
+}
+
+/* ---- Cuerpo: productos + pedido ---- */
+
+.catalogo__cuerpo {
+  display: grid;
+  gap: var(--espacio-5);
+  margin-top: var(--espacio-5);
+}
+
+.resultados__resumen {
+  color: var(--color-suave);
+}
+
+.productos {
+  display: grid;
+  gap: var(--espacio-4);
+  list-style: none;
+}
+
+.producto {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: var(--espacio-3);
+  overflow: hidden;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.producto__imagen {
+  width: 100%;
+  height: 10rem;
+  padding: var(--espacio-3);
+  object-fit: contain;
+  background: #f3f7fb;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+/* El resto de las partes de la tarjeta comparten el margen lateral */
+.producto__titulo,
+.producto__datos,
+.producto__precio,
+.producto__estado,
+.producto__acciones {
+  margin-left: 1.1rem;
+  margin-right: 1.1rem;
+}
+
+.producto__titulo {
+  margin-top: var(--espacio-3);
+  margin-bottom: var(--espacio-2);
+  font-size: 1.6rem;
+}
+
+.producto__datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.1rem var(--espacio-3);
+  margin-bottom: var(--espacio-3);
+  font-size: 0.92rem;
+}
+
+.producto__dato {
+  color: var(--color-suave);
+}
+
+.producto__valor {
+  margin: 0;
+}
+
+.producto__precio {
+  margin-bottom: var(--espacio-1);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.producto__estado {
+  margin-bottom: var(--espacio-3);
+  font-size: var(--fs-chico);
+  font-weight: 700;
+}
+
+.producto__estado--libre { color: var(--color-ok); }
+.producto__estado--ocupado { color: var(--color-primario); }
+.producto__estado--cotizar { color: var(--color-suave); }
+
+.producto__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+  margin-top: auto;
+}
+
+.producto__acciones .boton {
+  flex: 1 1 auto;
+}
+
+/* ---- Pedido (carrito) ---- */
+
+.pedido {
+  padding: var(--espacio-4);
+  background: var(--color-superficie);
+  border: 2px solid var(--color-texto);
+  border-radius: var(--radio);
+}
+
+.pedido__titulo {
+  font-size: var(--fs-2xl);
+}
+
+.pedido__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.pedido__leyenda {
+  margin-bottom: var(--espacio-2);
+  text-align: left;
+  font-size: var(--fs-chico);
+  color: var(--color-suave);
+}
+
+.pedido__tabla th,
+.pedido__tabla td {
+  padding: 0.55rem 0.25rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--color-borde);
+}
+
+.pedido__tabla td {
+  white-space: nowrap;
+}
+
+.pedido__tabla thead th {
+  font-size: 0.8rem;
+  color: var(--color-suave);
+  border-top: 0;
+}
+
+.pedido__tabla tbody th {
+  font-weight: 700;
+}
+
+.pedido__tabla tfoot th,
+.pedido__tabla tfoot td {
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-top: 2px solid var(--color-texto);
+}
+
+.pedido__detalle {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--color-suave);
+}
+
+.pedido__cantidad {
+  width: 3.6rem;
+  min-height: 0;
+  padding: 0.35rem 0.4rem;
+}
+
+.pedido__nota {
+  margin: var(--espacio-3) 0;
+  font-size: var(--fs-chico);
+  color: var(--color-suave);
+}
+
+.pedido__acciones {
+  display: grid;
+  gap: var(--espacio-2);
+  margin: 0;
+}
+
+/* ---- Confirmación del pedido (oculta hasta que JavaScript la muestre) ---- */
+
+.confirmacion {
+  margin-top: var(--espacio-5);
+  padding: var(--espacio-4);
+  background: var(--color-superficie);
+  border: 3px solid var(--color-ok);
+  border-radius: var(--radio);
+}
+
+.confirmacion__titulo {
+  color: var(--color-ok);
+}
+
+.confirmacion__numero {
+  font-size: 1.4rem;
+}
+
+.confirmacion__datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-1) var(--espacio-3);
+  margin: 0 0 var(--espacio-3);
+}
+
+.confirmacion__datos dt {
+  color: var(--color-suave);
+}
+
+.confirmacion__datos dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.confirmacion__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-3);
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .catalogo__cuerpo {
+    grid-template-columns: minmax(0, 1fr) 24rem;
+    align-items: start;
+  }
+
+  /* El pedido acompaña al recorrer el catálogo */
+  .pedido {
+    position: sticky;
+    top: var(--espacio-3);
+  }
+}
+
+@media (min-width: 80rem) {
+  .productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==== CONTACTO ============================================================ */
+
+.contacto__cuerpo {
+  display: grid;
+  gap: var(--espacio-5);
+  margin-top: var(--espacio-5);
+}
+
+.contacto__lateral {
+  display: grid;
+  gap: var(--espacio-5);
+  align-content: start;
+}
+
+@media (min-width: 64rem) {
+  .contacto__cuerpo {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}

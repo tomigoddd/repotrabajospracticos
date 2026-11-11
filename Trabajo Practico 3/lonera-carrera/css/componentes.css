@@ -1,0 +1,398 @@
+/* ==========================================================================
+   componentes.css
+   Piezas reutilizables que aparecen en más de una página: botones, campos de
+   formulario, chips, etiquetas (tarjetas con ojal y costura), avisos, ficha
+   modal y preguntas frecuentes.
+   ========================================================================== */
+
+/* ---- Botón (sirve para <button> y para <a>) ------------------------------ */
+
+.boton {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background: var(--color-primario);
+  border: 2px solid var(--color-primario);
+  border-radius: var(--radio);
+  cursor: pointer;
+}
+
+.boton:hover {
+  background: var(--color-primario-oscuro);
+  border-color: var(--color-primario-oscuro);
+}
+
+.boton--secundario {
+  color: var(--color-texto);
+  background: transparent;
+  border-color: var(--color-texto);
+}
+
+.boton--secundario:hover {
+  color: #fff;
+  background: var(--color-texto);
+  border-color: var(--color-texto);
+}
+
+/* Sobre fondo azul */
+.boton--claro {
+  color: var(--color-texto);
+  background: #fff;
+  border-color: #fff;
+}
+
+.boton--claro:hover {
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  border-color: var(--color-fondo);
+}
+
+.boton--chico {
+  padding: 0.4rem 0.8rem;
+  font-size: var(--fs-chico);
+}
+
+.boton:disabled {
+  color: #5b6b80;
+  background: #dde4ec;
+  border-color: #dde4ec;
+  cursor: not-allowed;
+}
+
+/* ---- Campo de formulario: etiqueta + control + ayuda --------------------- */
+
+.campo {
+  display: grid;
+  gap: var(--espacio-1);
+  align-content: start;
+  min-width: 0;
+}
+
+.campo__etiqueta {
+  font-size: var(--fs-chico);
+  font-weight: 700;
+}
+
+.campo__control {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.8rem;
+  font: inherit;
+  color: var(--color-texto);
+  background: #fff;
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.campo__control:focus {
+  border-color: var(--color-acento);
+}
+
+.campo__ayuda {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--color-suave);
+}
+
+/* ---- Chips: botones de radio que parecen etiquetas ------------------------ */
+/* El <input> se oculta a la vista pero sigue en el teclado y en los lectores de pantalla. */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-2);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.chips__leyenda {
+  width: 100%;
+  margin-bottom: var(--espacio-1);
+  padding: 0;
+  font-size: var(--fs-chico);
+  font-weight: 700;
+}
+
+.chips__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.chips__etiqueta {
+  padding: 0.45rem 1rem;
+  font-weight: 600;
+  background: #fff;
+  border: 2px solid var(--color-borde);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.chips__input:checked + .chips__etiqueta {
+  color: #fff;
+  background: var(--color-primario);
+  border-color: var(--color-primario);
+}
+
+.chips__input:focus-visible + .chips__etiqueta {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+/* ---- Etiqueta: tarjeta con ojal y costura (como las etiquetas de lona) --- */
+
+.etiqueta {
+  position: relative;
+  padding: 2.4rem var(--espacio-4) var(--espacio-4);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+/* Ojal */
+.etiqueta::before {
+  content: "";
+  position: absolute;
+  top: 0.7rem;
+  left: 1.3rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  background: var(--color-fondo);
+  border: 3px solid var(--color-borde);
+  border-radius: 50%;
+}
+
+/* Costura */
+.etiqueta::after {
+  content: "";
+  position: absolute;
+  inset: 0.35rem;
+  border: 2px dashed var(--color-borde);
+  border-radius: 0.3rem;
+  pointer-events: none;
+}
+
+.etiqueta__titulo {
+  font-size: var(--fs-2xl);
+  color: var(--color-primario);
+}
+
+.etiqueta__imagen {
+  display: block;
+  width: auto;
+  height: 9rem;
+  margin: 0 auto var(--espacio-3);
+}
+
+.enlace-flecha {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.enlace-flecha::after {
+  content: "→" / "";
+  margin-left: 0.3rem;
+}
+
+.enlace-flecha:hover {
+  text-decoration: underline;
+}
+
+/* ---- Formulario ----------------------------------------------------------- */
+
+.formulario {
+  display: grid;
+  gap: var(--espacio-4);
+  padding: var(--espacio-4);
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.formulario__grupo {
+  display: grid;
+  gap: var(--espacio-3);
+  min-width: 0;
+  margin: 0;
+  padding: var(--espacio-3);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.formulario__leyenda {
+  padding: 0 var(--espacio-2);
+  font-stretch: var(--titulo-ancho);
+  font-weight: var(--titulo-peso);
+  font-size: var(--fs-lg);
+  color: var(--color-primario);
+}
+
+.formulario__fila {
+  display: grid;
+  gap: var(--espacio-3);
+}
+
+.formulario__nota {
+  margin: 0;
+  font-size: var(--fs-chico);
+  color: var(--color-suave);
+}
+
+.formulario__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-2);
+}
+
+@media (min-width: 40rem) {
+  .formulario__fila {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- Avisos (toasts) ------------------------------------------------------ */
+/* #avisos es una región role="status": JavaScript (SP4) agrega elementos .aviso adentro. */
+
+.avisos {
+  position: fixed;
+  top: var(--espacio-3);
+  right: var(--espacio-3);
+  left: var(--espacio-3);
+  z-index: 50;
+  display: grid;
+  justify-items: end;
+  gap: var(--espacio-2);
+  pointer-events: none;
+}
+
+.aviso {
+  max-width: 26rem;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  background: var(--color-texto);
+  border-radius: var(--radio);
+  box-shadow: 0 4px 0 rgb(20, 35, 58, 0.2);
+  pointer-events: auto;
+}
+
+.aviso--ok { background: var(--color-ok); }
+.aviso--error { background: var(--color-primario-oscuro); }
+
+/* ---- Ficha del producto (ventana modal <dialog>) -------------------------- */
+
+.ficha {
+  width: calc(100% - 2rem);
+  max-width: 34rem;
+  padding: var(--espacio-4);
+  color: var(--color-texto);
+  background: var(--color-superficie);
+  border: 3px solid var(--color-texto);
+  border-radius: 0.6rem;
+}
+
+.ficha::backdrop {
+  background: rgb(20, 35, 58, 0.65);
+}
+
+.ficha__cerrar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 var(--espacio-2);
+}
+
+.ficha__imagen {
+  display: block;
+  margin: 0 auto var(--espacio-3);
+}
+
+.ficha__titulo {
+  color: var(--color-primario);
+}
+
+.ficha__datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--espacio-1) var(--espacio-3);
+  margin: 0 0 var(--espacio-4);
+}
+
+.ficha__datos dt {
+  color: var(--color-suave);
+}
+
+.ficha__datos dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ---- Preguntas frecuentes (<details>) ------------------------------------- */
+
+.faq__item {
+  margin-bottom: 0.6rem;
+  background: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+.faq__pregunta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espacio-3);
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__pregunta::-webkit-details-marker {
+  display: none;
+}
+
+.faq__pregunta::after {
+  content: "+" / "";
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--color-primario);
+}
+
+.faq__item[open] .faq__pregunta::after {
+  content: "−" / "";
+}
+
+.faq__respuesta {
+  margin: 0;
+  padding: 0 1rem 1rem;
+  color: var(--color-suave);
+}
+
+/* ---- Datos de contacto ----------------------------------------------------- */
+
+.datos-contacto {
+  font-style: normal;
+}
+
+.datos-contacto__lista {
+  display: grid;
+  gap: var(--espacio-3);
+  margin: 0;
+}
+
+.datos-contacto__lista dt {
+  font-size: var(--fs-chico);
+  color: var(--color-suave);
+}
+
+.datos-contacto__lista dd {
+  margin: 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}

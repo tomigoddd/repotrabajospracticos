@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio | Lonera Carrera</title>
+  <meta name="description" content="Lonera Carrera: trabajos de lonería, fabricación y alquiler de castillos inflables.">
+  <meta name="author" content="Tomas Godoy">
+  <meta name="theme-color" content="#b8231a">
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <!-- Los estilos se cargan en orden: de lo general (variables, base) a lo particular (páginas). -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a class="marca" href="index.html">
+      <img class="marca__logo" src="img/logo.svg" alt="" width="56" height="56">
+      <span class="marca__nombre">Lonera Carrera</span>
+    </a>
+
+    <!-- El botón del menú responsive queda oculto por CSS hasta que JavaScript lo active en SP4. -->
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menú</button>
+
+    <nav class="menu" aria-label="Principal">
+      <ul class="menu__lista" id="menu-principal">
+          <li class="menu__item"><a class="menu__enlace" href="index.html" aria-current="page">Inicio</a></li>
+          <li class="menu__item"><a class="menu__enlace" href="catalogo.html">Catálogo</a></li>
+          <li class="menu__item"><a class="menu__enlace" href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- El número del pedido es de ejemplo; en SP4 lo actualiza JavaScript. -->
+    <a class="carrito-enlace" href="catalogo.html#pedido">Pedido (<span class="carrito-enlace__cantidad">2</span>)</a>
+  </header>
+
+
+  <main id="contenido">
+
+    <section class="hero" aria-labelledby="titulo-inicio">
+      <div class="hero__texto">
+        <h1 class="hero__titulo" id="titulo-inicio">Lonería y castillos inflables</h1>
+        <p class="hero__lead">Trabajos de lonería, fabricación y alquiler de castillos inflables, con el seguimiento de cada pedido y cada reserva en un solo lugar.</p>
+        <p class="hero__acciones">
+          <a class="boton" href="catalogo.html">Ver catálogo</a>
+          <a class="boton boton--secundario" href="contacto.html">Pedir presupuesto</a>
+        </p>
+      </div>
+      <img class="hero__imagen" src="img/hero-castillo.svg" alt="Ilustración de un castillo inflable azul con torres rojas" width="320" height="270">
+    </section>
+
+    <section class="seccion" aria-labelledby="titulo-servicios">
+      <h2 class="seccion__titulo" id="titulo-servicios">Servicios</h2>
+
+      <div class="servicios">
+        <article class="etiqueta" aria-labelledby="servicio-loneria">
+          <img class="etiqueta__imagen" src="img/servicio-loneria.svg" alt="" width="240" height="188">
+          <h3 class="etiqueta__titulo" id="servicio-loneria">Lonería</h3>
+          <p>Toldos y otros trabajos en lona, a medida, desde el pedido del cliente hasta el pago.</p>
+          <p><a class="enlace-flecha" href="catalogo.html">Ver trabajos de lonería</a></p>
+        </article>
+
+        <article class="etiqueta" aria-labelledby="servicio-castillos">
+          <img class="etiqueta__imagen" src="img/servicio-castillos.svg" alt="" width="240" height="203">
+          <h3 class="etiqueta__titulo" id="servicio-castillos">Castillos inflables</h3>
+          <p>Fabricamos castillos inflables y los alquilamos para eventos. Consultá la disponibilidad por fecha antes de reservar.</p>
+          <p><a class="enlace-flecha" href="catalogo.html">Ver castillos</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="seccion" aria-labelledby="titulo-pasos">
+      <h2 class="seccion__titulo" id="titulo-pasos">Cómo reservar y pedir</h2>
+      <ol class="pasos">
+        <li class="paso">
+          <h3 class="paso__titulo">Elegí</h3>
+          <p>Mirá el catálogo y filtrá por tipo, tamaño o capacidad.</p>
+        </li>
+        <li class="paso">
+          <h3 class="paso__titulo">Indicá la fecha</h3>
+          <p>Comprobá si el castillo está libre el día de tu evento.</p>
+        </li>
+        <li class="paso">
+          <h3 class="paso__titulo">Confirmá</h3>
+          <p>Completá tus datos y recibí el número de tu pedido.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="llamado" aria-labelledby="titulo-consulta">
+      <h2 class="llamado__titulo" id="titulo-consulta">¿Tenés una consulta?</h2>
+      <p class="llamado__texto">Si necesitás un trabajo de lonería a medida o tenés dudas sobre un alquiler, escribinos.</p>
+      <p><a class="boton boton--claro" href="contacto.html">Ir al formulario de contacto</a></p>
+    </section>
+
+  </main>
+
+
+  <footer class="pie">
+    <p class="pie__texto">Lonera Carrera. Maqueta académica de Aplicaciones Web I, SP3. Tomas Godoy.</p>
+  </footer>
+
+  <!-- Región de avisos (toasts). Vacía a propósito: en SP4 JavaScript escribe acá los mensajes
+       (elementos con la clase aviso) y el lector de pantalla los anuncia sin mover el foco. -->
+  <div class="avisos" id="avisos" role="status" aria-atomic="true"></div>
+
+</body>
+</html>

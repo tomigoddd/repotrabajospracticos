@@ -1,0 +1,56 @@
+/* ==========================================================================
+   variables.css
+   Valores de diseño del sitio (paleta, tipografía, espacios). Es el único lugar
+   donde se definen: el resto de los archivos solo los usa con var().
+   Paleta tomada del mockup del SP1: rojo toldo, azul PVC, cielo y tinta.
+   ========================================================================== */
+
+:root {
+  /* Colores */
+  --color-fondo: #e9f0f6;        /* cielo: fondo de las páginas */
+  --color-superficie: #fff;   /* tarjetas, formularios, cabecera */
+  --color-texto: #14233a;        /* tinta */
+  --color-suave: #43546b;        /* texto secundario */
+  --color-primario: #b8231a;     /* rojo toldo: botones y títulos de marca */
+  --color-primario-oscuro: #8f1a13;
+  --color-acento: #1b5aa6;       /* azul PVC: enlaces y números */
+  --color-borde: #b9c7d6;
+  --color-ok: #17653a;           /* disponible */
+  --color-toldo-a: #c8281e;      /* rayas del toldo de la cabecera */
+  --color-toldo-b: #fff;
+
+  /* Tipografía: Archivo es una fuente variable (ancho y peso ajustables). */
+  --fuente: "Archivo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --titulo-ancho: 62%;           /* títulos condensados, como un rótulo de lona */
+  --titulo-peso: 800;
+
+  --fs-base: 1rem;
+  --fs-chico: 0.875rem;
+  --fs-lg: 1.25rem;
+  --fs-2xl: clamp(1.7rem, 4vw, 2.2rem);
+  --fs-3xl: clamp(2rem, 5vw, 2.8rem);
+  --fs-4xl: clamp(2.8rem, 9vw, 5rem);
+
+  /* Espacios (escala) */
+  --espacio-1: 0.25rem;
+  --espacio-2: 0.5rem;
+  --espacio-3: 1rem;
+  --espacio-4: 1.5rem;
+  --espacio-5: 2.5rem;
+  --espacio-6: 4rem;
+
+  --radio: 0.4rem;
+  --ancho-max: 77.5rem;                       /* 1240 px */
+  --gutter: clamp(1rem, 4vw, 2rem);           /* margen lateral de la página */
+
+  /* Toldo de la cabecera */
+  --toldo-ancho: 1.75rem;                     /* ancho de cada raya; sube en pantallas grandes */
+  --toldo-alto: 1rem;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --toldo-ancho: 2.5rem;
+    --toldo-alto: 1.5rem;
+  }
+}
